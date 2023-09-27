@@ -10,6 +10,15 @@ export default async function handle(req, res) {
     const { method } = req
 
     // mongoose.connect(clientPromise.url) 
+    if (method === 'GET') {
+        res.statuus(201).json(await Product.find())
+        // if (req.query?.id) {
+        //     res.json(await Product.findOne({ _id: req.query.id }));
+        // } else {
+        //     res.json(await Product.find());
+        // }
+    }
+
     if (method === 'POST') {
         const createProduct = await Product.create({
             title, description, price

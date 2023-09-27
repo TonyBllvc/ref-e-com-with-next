@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Layout from '../../components/Layout'
 import { Box, Button, Container, FormControl, FormLabel, Heading, Input, Stack, Textarea, VStack } from '@chakra-ui/react'
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 export default function New() {
 
@@ -9,6 +10,7 @@ export default function New() {
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
 
+    const router = useRouter()
     async function handleSubmit(ev) {
         ev.preventDefault()
         const data = {
@@ -17,6 +19,9 @@ export default function New() {
             price
         }
         axios.post('/api/products', data )
+
+        // router.push(-1)
+        router.push('/products')
     }
 
     return (
@@ -31,7 +36,7 @@ export default function New() {
                             <FormLabel color='teal.500'>
                                 Product Name
                             </FormLabel>
-                            <Input mb='4px' value={title} onChange={ev => setTitle(ev.target.value)} placeholder='Product name' size='md' />
+                            <Input type='text' mb='4px' value={title} onChange={ev => setTitle(ev.target.value)} placeholder='Product name' size='md' />
                         </FormControl>
                         <FormControl isRequired>
                             <FormLabel color='teal.500'>
@@ -43,7 +48,7 @@ export default function New() {
                             <FormLabel color='teal.500'>
                                 Price in (USD)
                             </FormLabel>
-                            <Input mb='4px' value={price} onChange={ev => setPrice(ev.target.value)} placeholder='Price' size='md' />
+                            <Input type='number' mb='4px' value={price} onChange={ev => setPrice(ev.target.value)} placeholder='Price' size='md' />
                         </FormControl>
                         <Box width='100%' display='flex' justifyContent='flex-end' >
                             <Button type='submit' px={['7', '10', '12', '14']} fontSize={['sm', 'md', 'xl', '2xl']} variant='solid' color='whiteAlpha.900' colorScheme='teal' bg='teal.700'>
