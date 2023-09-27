@@ -11,7 +11,9 @@ export default async function handle(req, res) {
 
     // mongoose.connect(clientPromise.url) 
     if (method === 'GET') {
-        res.statuus(201).json(await Product.find())
+        const product = await Product.find()
+
+        res.status(201).json(product)
         // if (req.query?.id) {
         //     res.json(await Product.findOne({ _id: req.query.id }));
         // } else {
