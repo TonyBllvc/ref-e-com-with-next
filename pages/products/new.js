@@ -27,19 +27,19 @@ export default function New() {
                         <Heading color='teal.600' mb='5px'>
                             New Product
                         </Heading>
-                        <FormControl >
+                        <FormControl isRequired>
                             <FormLabel color='teal.500'>
                                 Product Name
                             </FormLabel>
                             <Input mb='4px' value={title} onChange={ev => setTitle(ev.target.value)} placeholder='Product name' size='md' />
                         </FormControl>
-                        <FormControl >
+                        <FormControl isRequired>
                             <FormLabel color='teal.500'>
                                 Description
                             </FormLabel>
                             <Textarea value={description} onChange={ev => setDescription(ev.target.value)} placeholder='Description' />
                         </FormControl>
-                        <FormControl >
+                        <FormControl isRequired>
                             <FormLabel color='teal.500'>
                                 Price in (USD)
                             </FormLabel>
