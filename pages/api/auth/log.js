@@ -2,8 +2,8 @@ import connectDB from "../../../lib/db";
 import jwt from 'jsonwebtoken'
 // import { mongooseConnect } from "../../../lib/mongoose";
 import NextUserModel from "../../../models/User";
-// import { serialize } from "cookie";
-import { parse } from "cookie";
+import { serialize } from "cookie";
+// import { parse } from "cookie";
 
 connectDB()
 console.log('Coonected')
@@ -18,12 +18,12 @@ const createToken = (res, _id) => {
     // 3. any property -- this case, the expires property
     const tokenCookie = jwt.sign({ _id }, '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', { expiresIn: '1d' })
 
-    const serialised = parse("jwt", tokenCookie, {
+    const serialised = serialize("jwt", tokenCookie, {
         httpOnly: true,
         secure: process.env.NODE_ENV !== "development",
         sameSite: "strict",
         maxAge: 2 * 24 * 60 * 60 * 1000, // 2 days
-        // path: "/",
+        path: "/",
     });
 
     res.setHeader("Set-Cookie", serialised);
