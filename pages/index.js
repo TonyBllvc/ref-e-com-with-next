@@ -1,11 +1,13 @@
 import { Button } from '@chakra-ui/react'
 import Head from 'next/head'
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn, signOut, getSession } from "next-auth/react"
 import Nav from '../components/Nav'
 import Layout from '../components/Layout'
 
 export default function Home() {
-  const { data: session } = useSession()
+  // const { data: session } = useSession()
+  
+  const session = getSession()
 
   return (
     <Layout >

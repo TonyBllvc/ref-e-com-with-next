@@ -116,36 +116,36 @@ userSchema.statics.signup = async function (name, email, password) {
 }
 
 // static login method
-// UserSchema.statics.login = async function (name, email, password) {
-//     // validation
-//     // check if the mail and password both have values
-//     if (!name || !email || !password) {
-//         throw Error('All fields must be filled')
-//     }
+userSchema.statics.login = async function ( email, password) {
+    // validation
+    // check if the mail and password both have values
+    if ( !email || !password) {
+        throw Error('All fields must be filled')
+    }
 
 
-//     // to find the user with email
-//     const user = await this.findOne({ email })
+    // to find the user with email
+    const user = await this.findOne({ email })
 
-//     // check if user exists or not
-//     // if not, throw error
-//     if (!user) {
-//         throw Error('Incorrect email and password')
-//     }
+    // check if user exists or not
+    // if not, throw error
+    if (!user) {
+        throw Error('Incorrect email and password')
+    }
 
-//     // match passwords with the hashed version, to compare
-//     // two arguments:(
-//     // 1. normal password value 
-//     // 2. encrypted password version(hashed) 
-//     // )
-//     const match = await bcrypt.compare(password, user.password)
+    // match passwords with the hashed version, to compare
+    // two arguments:(
+    // 1. normal password value 
+    // 2. encrypted password version(hashed) 
+    // )
+    const match = await bcrypt.compare(password, user.password)
 
-//     if (!match) {
-//         throw Error(' Incorrect emain and password')
-//     }
+    if (!match) {
+        throw Error(' Incorrect emain and password')
+    }
 
-//     return user
-// }
+    return user
+}
 
 const NextUserModel = models.NextUser || model('NextUser', userSchema);
 
