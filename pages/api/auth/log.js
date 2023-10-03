@@ -6,7 +6,7 @@ import { serialize } from "cookie";
 // import { parse } from "cookie";
 
 connectDB()
-console.log('Coonected')
+console.log('Connected')
 
 // to crease a web token 
 const createToken = (res, _id) => {
@@ -46,6 +46,7 @@ export default async function handle(req, res) {
         return res.status(204).json({ error: 'Please fill in all the fields', emptyFields })
     }
 
+    console.log('Valid')
     if (method === 'POST') {
 
         try {
@@ -55,6 +56,7 @@ export default async function handle(req, res) {
             // create a token
             createToken(res, admin._id)
 
+            console.log('Token created')
             res.status(200).json({ _id: admin._id, email, name: admin.name })
         } catch (error) {
             res.status(400).json({ error: error.message })

@@ -1,19 +1,21 @@
 import React, { useState } from 'react'
+import { signIn } from "next-auth/react";
 import { useLogin } from '../../../hooks/useLogin'
 
-export default function login_admin() {
+export default function LogAdmin() {
     const [show, setShow] = useState(false)
     const [email, setEmail] = useState('')
     // const [role, setRole] = useState('Admin')
     const [password, setPassword] = useState('')
 
-    const { login, pending, error } = useLogin('/api/auth/log')
+    const { pending, error } = useLogin()
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        await login(email, password)
+        await signIn("authorize_use")
+        // await login(email, password)
     }
 
     const handleShowHide = () => {
@@ -28,9 +30,9 @@ export default function login_admin() {
 
                 <FormControl id='login-email' isRequired>
                     <FormLabel color='black' fontSize={['12.5', '13', '15', '16']}>
-                        Admin ID:
+                        Email:
                     </FormLabel>
-                    <Input height={['35px', '35px', '40px', '40px']} type='text' bg='green.100' placeholder='Enter your Email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <Input height={['35px', '35px', '40px', '40px']} type='email' bg='green.100' placeholder='Enter your Email' value={email} onChange={(e) => setEmail(e.target.value)} />
                 </FormControl>
 
                 {/* <FormControl id='login-role' isRequired>

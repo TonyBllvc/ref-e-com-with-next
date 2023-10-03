@@ -2,6 +2,7 @@ import { Button } from '@chakra-ui/react'
 import Head from 'next/head'
 import { useSession, signIn, signOut } from "next-auth/react"
 import Nav from '../components/Nav'
+import Login from '../pages/authorize/login'
 
 export default function Layout({ children }) {
     const { data: session } = useSession()
@@ -9,9 +10,7 @@ export default function Layout({ children }) {
         return <>
             <div className=" w-screen h-screen bg-blue-900 flex items-center">
                 <div className="w-full text-center" >
-                    <Button onClick={() => signIn('google')} variant='ghost' colorScheme='blue' bg='whiteAlpha.800'>
-                        Login with google
-                    </Button>
+                    <Login signIn={signIn} />
                 </div>
             </div>
         </>

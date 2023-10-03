@@ -1,8 +1,9 @@
 import { Box, Container, Image, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react'
 import Link from 'next/link'
 import React from 'react'
+import SignAdmin from './modals/SignAdmin'
 
-export default function signup() {
+export default function Signup() {
     return (
         <Container maxW='2xl' centerContent >
             <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center' textAlign='center' p={4} bg='white' w='100%' m='40px 0 15px 0' borderRadius='lg' borderWidth='1px' >
@@ -14,7 +15,7 @@ export default function signup() {
                         </TabList>
                         <TabPanels>
                             <TabPanel>
-                                <SpecialSignUp />
+                                <SignAdmin />
                             </TabPanel>
                         </TabPanels>
                         <Box display='flex' width='100%' justifyContent='center' alignItems='center' >

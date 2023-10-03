@@ -21,13 +21,13 @@ export default async function handle(req, res) {
         const decoded = jwt.verify(tokenJWT, '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')
         if (decoded) {
         }
-        console.log('setp 1')
+        // console.log('setp 1')
         req.user = await NextUserModel.findById(decoded._id).select('-password')
         // req.user = decoded._id
-        console.log('setp 2')
+        // console.log('setp 2')
     } catch (error) {
         res.status(401).json({ error: error.name, status: error.statusCode, stack: error.stack})
-        console.log('setp e')
+        // console.log('setp e')
         return
     }
 

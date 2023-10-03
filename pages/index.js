@@ -13,12 +13,12 @@ export default function Home() {
     <Layout >
       <div className='flex justify-between text-teal-600'>
         <h2>
-          Hello, <b>{session?.user?.name}</b>
+          Hello, <b>{session?.profile?.name}</b>
         </h2>
         <div className='flex bg-gray-200 text-slate-800 gap-1 rounded-xl overflow-hidden'>
-          <img src={session?.user?.image} alt="my-image" className='w-6 h-6 rounded-xl' />
+          {/* <img src={session?.profile?.image} alt="my-image" className='w-6 h-6 rounded-xl' /> */}
           <span className='px-2'>
-            {session?.user?.name}
+            {session?.profile?.name}
           </span>
 
         </div>

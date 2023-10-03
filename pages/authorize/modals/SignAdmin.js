@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSignUp } from '../../../hooks/useSignup'
 import { useToast } from '@chakra-ui/react'
 
-export default function signup_admin() {
+export default function SignAdmin() {
     const [show, setShow] = useState(false)
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')

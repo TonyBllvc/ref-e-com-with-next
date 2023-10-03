@@ -1,11 +1,9 @@
 import { useState } from 'react'
 import { useToast } from '@chakra-ui/react';
-import { useAuthContext } from '../useAuthContext';
 import { useRouter } from 'next/router';
 
 export const useLogin = (url) => {
     const router = useRouter()
-
     const [error, setError] = useState(null)
     const [pending, setPending] = useState(false)
 
@@ -72,7 +70,7 @@ export const useLogin = (url) => {
 
             setPending(false)
 
-            navigate('/')
+            router.push('/')
         } catch (error) {
             toast({
                 title: error.message,
